@@ -1,3 +1,3 @@
-rootProject.name = 'JustThree'
+rootProject.name = 'RestaurantReview'
 
 include ':app'

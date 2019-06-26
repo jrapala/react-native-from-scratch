@@ -1,4 +1,4 @@
-package com.justthree;
+package com.restaurantreview;
 
 import android.app.Application;
 
