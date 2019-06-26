@@ -2,13 +2,21 @@ import React, {Component} from 'react'
 import {FlatList, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
 import Header from 'components/Header'
 import RestaurantRow from 'components/RestaurantRow'
-import {restaurants} from './lib/constants'
 
 export default class App extends Component<Props> {
 	state = {
+		restaurants: [],
 		search: null,
 	}
+
+	componentDidMount() {
+		fetch('http://localhost:3000/restaurants')
+			.then(response => response.json())
+			.then(result => this.setState({restaurants: result}))
+	}
+
 	render() {
+		const {restaurants} = this.state
 		return (
 			<View style={styles.container}>
 				<Header />
