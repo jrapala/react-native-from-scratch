@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {StyleSheet, Text, TextInput, View} from 'react-native'
-import HeaderStyle from './HeaderStyle'
+import Header from 'components/Header'
+import HeaderStyle from './src/styles/HeaderStyle'
 
 const restaurants = [
 	{
@@ -23,7 +24,7 @@ export default class App extends Component<Props> {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text style={HeaderStyle.header}>Restaurant Review</Text>
+				<Header />
 				<TextInput
 					style={styles.input}
 					placeholder="Live Search"
