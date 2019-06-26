@@ -52,9 +52,7 @@ export default class App extends Component<Props> {
 					renderItem={({item, index}) => <RestaurantRow place={item} index={index} />}
 					keyExtractor={item => item.name}
 					initialNumToRender={16}
-				>
-					<ScrollView contentContainerStyle={{paddingTop: 30}}></ScrollView>
-				</FlatList>
+				></FlatList>
 			</View>
 		)
 	}

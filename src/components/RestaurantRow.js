@@ -1,24 +1,48 @@
 import React, {Component} from 'react'
-import {StyleSheet, Text, View} from 'react-native'
+import {
+	StyleSheet,
+	Text,
+	View,
+	TouchableOpacity,
+	TouchableHighlight,
+	TouchableWithoutFeedback,
+} from 'react-native'
 
 export default class RestaurantRow extends Component<Props> {
+	state = {
+		showInfo: false,
+	}
+
+	infoPressed = () => {
+		this.setState({showInfo: !this.state.showInfo})
+	}
 	render() {
 		const {place, index} = this.props
 		return (
-			<View
-				style={[styles.row, {backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'}]}
-				key={place.name}
-			>
-				<View style={styles.edges}>
-					<Text>{index + 1}</Text>
+			<View style={{backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'}} key={place.name}>
+				<View style={styles.row}>
+					<View style={styles.edges}>
+						<Text>{index + 1}</Text>
+					</View>
+					<View style={styles.nameAddress}>
+						<Text>{place.name}</Text>
+						<Text style={styles.address}>{place.address}</Text>
+					</View>
+					<View style={styles.edges}>
+						<TouchableHighlight
+							onPress={this.infoPressed}
+							style={styles.button}
+							underlayColor="#5398DC"
+						>
+							<Text style={styles.buttonText}>Info</Text>
+						</TouchableHighlight>
+					</View>
 				</View>
-				<View style={styles.nameAddress}>
-					<Text>{place.name}</Text>
-					<Text style={styles.address}>{place.address}</Text>
-				</View>
-				<View style={styles.edges}>
-					<Text>Info</Text>
-				</View>
+				{this.state.showInfo && (
+					<View style={styles.info}>
+						<Text>Restaurant Info</Text>
+					</View>
+				)}
 			</View>
 		)
 	}
@@ -28,11 +52,33 @@ const styles = StyleSheet.create({
 	address: {
 		color: 'grey',
 	},
+	button: {
+		borderWidth: 1,
+		borderColor: '#0066CC',
+		borderRadius: 14,
+		paddingHorizontal: 10,
+		paddingVertical: 3,
+		backgroundColor: '#fff',
+	},
+	buttonText: {
+		color: '#0066CC',
+		fontSize: 12,
+	},
 	edges: {
 		alignItems: 'center',
 		flex: 1,
 		justifyContent: 'center',
 		padding: 5,
+		minWidth: 50,
+	},
+	info: {
+		marginHorizontal: 40,
+		marginVertical: 10,
+		padding: 10,
+		backgroundColor: '#FFF',
+		borderWidth: 1,
+		borderColor: '#DDD',
+		borderRadius: 4,
 	},
 	nameAddress: {
 		flexDirection: 'column',
