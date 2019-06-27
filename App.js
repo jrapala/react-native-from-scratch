@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import {FlatList, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
+import {FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
 import Header from 'components/Header'
 import RestaurantRow from 'components/RestaurantRow'
+import PizzaImage from 'images/pizza.png'
 
 export default class App extends Component<Props> {
 	state = {
@@ -19,6 +20,9 @@ export default class App extends Component<Props> {
 		const {restaurants} = this.state
 		return (
 			<View style={styles.container}>
+				<View style={styles.image}>
+					<Image source={PizzaImage} />
+				</View>
 				<Header />
 				<TextInput
 					style={styles.input}
@@ -56,6 +60,10 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		padding: 5,
+	},
+	image: {
+		marginTop: 30,
+		alignItems: 'center',
 	},
 	input: {
 		padding: 10,

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {
+	Image,
 	StyleSheet,
 	Text,
 	View,
@@ -7,6 +8,7 @@ import {
 	TouchableHighlight,
 	TouchableWithoutFeedback,
 } from 'react-native'
+import Stars from 'components/Stars'
 
 export default class RestaurantRow extends Component<Props> {
 	state = {
@@ -21,8 +23,8 @@ export default class RestaurantRow extends Component<Props> {
 		return (
 			<View style={{backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'}} key={place.name}>
 				<View style={styles.row}>
-					<View style={styles.edges}>
-						<Text>{index + 1}</Text>
+					<View style={styles.stars}>
+						<Stars rating={place.rating} />
 					</View>
 					<View style={styles.nameAddress}>
 						<Text>{place.name}</Text>
@@ -41,6 +43,13 @@ export default class RestaurantRow extends Component<Props> {
 				{this.state.showInfo && (
 					<View style={styles.info}>
 						<Text>Restaurant Info</Text>
+						<Image
+							source={{
+								uri: `http://localhost:3000/images/${place.image}`,
+							}}
+							style={{height: 100, flex: 1}}
+							resizeMode="contain"
+						/>
 					</View>
 				)}
 			</View>
@@ -86,5 +95,13 @@ const styles = StyleSheet.create({
 	},
 	row: {
 		flexDirection: 'row',
+	},
+	stars: {
+		flex: 1,
+		alignItems: 'center',
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		padding: 5,
+		minWidth: 50,
 	},
 })
