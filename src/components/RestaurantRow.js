@@ -16,7 +16,8 @@ export default class RestaurantRow extends Component<Props> {
 	}
 
 	infoPressed = () => {
-		this.setState({showInfo: !this.state.showInfo})
+		// this.setState({showInfo: !this.state.showInfo})
+		this.props.navigation.navigate('Info')
 	}
 	render() {
 		const {place, index} = this.props
