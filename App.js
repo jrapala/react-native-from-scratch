@@ -6,6 +6,7 @@ import {
 } from 'react-navigation'
 import RestaurantList from 'components/RestaurantList'
 import RestaurantInfo from 'components/RestaurantInfo'
+import AddReview from 'components/AddReview'
 import About from 'components/About'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
@@ -52,4 +53,18 @@ const Tabs = createBottomTabNavigator(
 	}
 )
 
-export default createAppContainer(Tabs)
+const Modal = createStackNavigator(
+	{
+		Tabs: { screen: Tabs },
+		AddReview: { screen: AddReview },
+	},
+	{
+		mode: 'modal',
+		headerMode: 'none',
+		navigationOptions: {
+			gesturesEnabled: false,
+		},
+	}
+)
+
+export default createAppContainer(Modal)
