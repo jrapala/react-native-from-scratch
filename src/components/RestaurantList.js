@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
+import React, { Component } from 'react'
+import { FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import Header from 'components/Header'
 import RestaurantRow from 'components/RestaurantRow'
 import PizzaImage from 'images/pizza.png'
@@ -17,11 +17,11 @@ export default class RestaurantList extends Component<Props> {
 	componentDidMount() {
 		fetch('http://localhost:3000/restaurants')
 			.then(response => response.json())
-			.then(result => this.setState({restaurants: result}))
+			.then(result => this.setState({ restaurants: result }))
 	}
 
 	render() {
-		const {restaurants} = this.state
+		const { restaurants } = this.state
 		return (
 			<View style={styles.container}>
 				<View style={styles.image}>
@@ -32,7 +32,7 @@ export default class RestaurantList extends Component<Props> {
 					style={styles.input}
 					placeholder="Live Search"
 					onChangeText={text => {
-						this.setState({search: text})
+						this.setState({ search: text })
 					}}
 					value={this.state.search}
 				/>
@@ -43,7 +43,7 @@ export default class RestaurantList extends Component<Props> {
 							place.name.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1
 						)
 					})}
-					renderItem={({item, index}) => (
+					renderItem={({ item, index }) => (
 						<RestaurantRow
 							place={item}
 							index={index}

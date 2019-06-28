@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {
 	Image,
 	StyleSheet,
@@ -21,9 +21,12 @@ export default class RestaurantRow extends Component<Props> {
 		})
 	}
 	render() {
-		const {place, index} = this.props
+		const { place, index } = this.props
 		return (
-			<View style={{backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'}} key={place.name}>
+			<View
+				style={{ backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7' }}
+				key={place.name}
+			>
 				<View style={styles.row}>
 					<View style={styles.stars}>
 						<Stars rating={place.rating} />
@@ -49,7 +52,7 @@ export default class RestaurantRow extends Component<Props> {
 							source={{
 								uri: `http://localhost:3000/images/${place.image}`,
 							}}
-							style={{height: 100, flex: 1}}
+							style={{ height: 100, flex: 1 }}
 							resizeMode="contain"
 						/>
 					</View>

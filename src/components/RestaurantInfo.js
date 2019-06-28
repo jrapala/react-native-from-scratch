@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Text, View, ScrollView, Image, StyleSheet} from 'react-native'
+import React, { Component } from 'react'
+import { Text, View, ScrollView, Image, StyleSheet } from 'react-native'
 import Stars from 'components/Stars'
 
 export class RestaurantInfo extends Component {
@@ -13,7 +13,7 @@ export class RestaurantInfo extends Component {
 			<ScrollView style={styles.root}>
 				<View style={styles.infoHeader}>
 					<Image
-						source={{uri: `http://localhost:3000/images/${place.image}`}}
+						source={{ uri: `http://localhost:3000/images/${place.image}` }}
 						style={styles.image}
 					/>
 					<View style={styles.info}>

@@ -1,5 +1,9 @@
-import React, {Component} from 'react'
-import {createStackNavigator, createAppContainer, createBottomTabNavigator} from 'react-navigation'
+import React, { Component } from 'react'
+import {
+	createStackNavigator,
+	createAppContainer,
+	createBottomTabNavigator,
+} from 'react-navigation'
 import RestaurantList from 'components/RestaurantList'
 import RestaurantInfo from 'components/RestaurantInfo'
 import About from 'components/About'
@@ -7,8 +11,8 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 const List = createStackNavigator(
 	{
-		Home: {screen: RestaurantList},
-		Info: {screen: RestaurantInfo},
+		Home: { screen: RestaurantList },
+		Info: { screen: RestaurantInfo },
 	},
 	{
 		defaultNavigationOptions: {
@@ -26,13 +30,13 @@ const List = createStackNavigator(
 
 const Tabs = createBottomTabNavigator(
 	{
-		List: {screen: List},
-		About: {screen: About},
+		List: { screen: List },
+		About: { screen: About },
 	},
 	{
-		defaultNavigationOptions: ({navigation}) => {
+		defaultNavigationOptions: ({ navigation }) => {
 			return {
-				tabBarIcon: ({tintColor}) => {
+				tabBarIcon: ({ tintColor }) => {
 					const route = navigation.state.routeName
 					const name = {
 						List: 'list',

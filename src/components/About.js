@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import React, { Component } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 export class About extends Component {
 	render() {
 		return (
-			<View style={{flex: 1, padding: 40}}>
+			<View style={{ flex: 1, padding: 40 }}>
 				<Text style={styles.header}>About Restaurant Review</Text>
 
 				<Icon name="utensils" color="#0066CC" size={100} style={styles.icon} />
