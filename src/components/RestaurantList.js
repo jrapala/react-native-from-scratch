@@ -10,6 +10,10 @@ export default class RestaurantList extends Component<Props> {
 		search: null,
 	}
 
+	static navigationOptions = {
+		header: null,
+	}
+
 	componentDidMount() {
 		fetch('http://localhost:3000/restaurants')
 			.then(response => response.json())
@@ -60,6 +64,7 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1,
+		backgroundColor: '#FFF',
 	},
 	edges: {
 		alignItems: 'center',
