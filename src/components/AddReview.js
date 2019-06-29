@@ -7,6 +7,7 @@ import {
 	TextInput,
 	ActivityIndicator,
 } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
@@ -17,12 +18,25 @@ export class AddReview extends Component {
 		comment: '',
 		submitting: false,
 	}
+
+	componentDidMount() {
+		AsyncStorage.getItem('reviewer_name').then(name => {
+			if (name !== null && name !== undefined) {
+				this.setState({ name })
+			}
+		})
+	}
 	close = () => {
 		this.props.navigation.goBack()
 	}
 
 	submitReview = () => {
 		this.setState({ submitting: true })
+
+		if (this.state.name !== null && this.state.name !== undefined) {
+			AsyncStorage.setItem('reviewer_name', this.state.name)
+		}
+
 		fetch('http://localhost:3000/review', {
 			method: 'POST',
 			body: JSON.stringify({
